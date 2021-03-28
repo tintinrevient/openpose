@@ -163,6 +163,10 @@ Run the following commands in your terminal:
 cd build/
 make -j`sysctl -n hw.logicalcpu`
 ```
+
+##### Issues
+* vecLib_INCLUDE_DIR:PATH=vecLib_INCLUDE_DIR-NOTFOUND: https://github.com/CMU-Perceptual-Computing-Lab/openpose/issues/1248
+
 Advanced tip: Mac provides both `logicalcpu` and `physicalcpu`, but we want the logical number for maximum speed.
 
 If the default compilation fails with Caffe errors, install Caffe separately and set `BUILD_CAFFE` to false in the CMake config. Steps:

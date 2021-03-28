@@ -164,7 +164,7 @@ cd build/
 make -j`sysctl -n hw.logicalcpu`
 ```
 
-##### Issues
+#### Issues
 * vecLib_INCLUDE_DIR:PATH=vecLib_INCLUDE_DIR-NOTFOUND: https://github.com/CMU-Perceptual-Computing-Lab/openpose/issues/1248
 
 Advanced tip: Mac provides both `logicalcpu` and `physicalcpu`, but we want the logical number for maximum speed.

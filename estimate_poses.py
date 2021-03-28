@@ -2,6 +2,9 @@ import os
 import argparse
 import subprocess
 
+# python estimate_poses.py --input input/classical/
+# python estimate_poses.py --input input/modern/
+
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description='OpenPose')

@@ -1,9 +1,9 @@
 import os
 import argparse
 import subprocess
+import glob
 
-# python estimate_poses.py --input input/classical/
-# python estimate_poses.py --input input/modern/
+# python estimate_poses.py --input input/
 
 if __name__ == '__main__':
 
@@ -15,6 +15,12 @@ if __name__ == '__main__':
         for name in dirs:
 
             indir = os.path.join(root, name)
+
+            # indir is only the directory with .jpg files
+            first_in_indir = glob.glob(os.path.join(indir, '*'))[0]
+            if(os.path.isdir(first_in_indir)):
+                continue
+
             fname = indir[indir.find('/')+1:]
             outdir = os.path.join('output', fname)
 

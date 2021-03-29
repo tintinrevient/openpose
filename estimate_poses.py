@@ -4,6 +4,7 @@ import subprocess
 import glob
 
 # python estimate_poses.py --input input/
+# python examples/tutorial_api_python/04_keypoints_from_images.py --image_dir test/
 
 if __name__ == '__main__':
 

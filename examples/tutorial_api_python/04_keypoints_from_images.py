@@ -22,7 +22,7 @@ try:
             sys.path.append('../../python');
             # If you run `make install` (default path is `/usr/local/python` for Ubuntu), you can also access the OpenPose/python module from there. This will install OpenPose and the python library at your desired installation path. Ensure that this is in your python path in order to use it.
             # sys.path.append('/usr/local/python')
-            from openpose import pyopenpose as op
+            import pyopenpose as op
     except ImportError as e:
         print('Error: OpenPose library could not be found. Did you enable `BUILD_PYTHON` in CMake and have this Python script in the right folder?')
         raise e
@@ -35,7 +35,7 @@ try:
 
     # Custom Params (refer to include/openpose/flags.hpp for more parameters)
     params = dict()
-    params["model_folder"] = "../../../models/"
+    params["model_folder"] = "models/"
 
     # Add others in path?
     for i in range(0, len(args[1])):
@@ -73,8 +73,8 @@ try:
 
         if not args[0].no_display:
             cv2.imshow("OpenPose 1.7.0 - Tutorial Python API", datum.cvOutputData)
-            key = cv2.waitKey(15)
-            if key == 27: break
+            cv2.waitKey(0)
+            cv2.destroyAllWindows()
 
     end = time.time()
     print("OpenPose demo successfully finished. Total time: " + str(end - start) + " seconds")

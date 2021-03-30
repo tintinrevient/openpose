@@ -44,13 +44,13 @@ def generate_keypoints(infile, show):
 
 def generate_outfile(infile):
 
-    outdir = os.path.join('output', infile[infile.find('/') + 1:infile.rfind('/')])
+    outdir = os.path.join('test', 'data')
 
     if not os.path.exists(outdir):
         os.makedirs(outdir)
 
-    fname = infile[infile.find('/') + 1:infile.rfind('.')]
-    outfile = os.path.join('output', '{}_keypoints.npy'.format(fname))
+    fname = infile[infile.rfind('/') + 1:infile.rfind('.')]
+    outfile = os.path.join(outdir, '{}_keypoints.npy'.format(fname))
 
     return outfile
 

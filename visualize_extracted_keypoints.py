@@ -44,6 +44,8 @@ def load_keypoints(infile):
 
 if __name__ == '__main__':
 
+    # python visualize_extracted_keypoints.py --input test/data/2581_keypoints.npy
+
     parser = argparse.ArgumentParser(description='Extract the keypoints')
     parser.add_argument("--input",
                         help="Process a directory of images. Read all standard formats (jpg, png, bmp, etc.).")

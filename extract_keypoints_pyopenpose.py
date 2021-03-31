@@ -16,12 +16,12 @@ def generate_keypoints(infile, show):
     datum.cvInputData = imageToProcess
     opWrapper.emplaceAndPop(op.VectorDatum([datum]))
 
-    print("Body keypoints: \n" + str(datum.poseKeypoints))
+    # print("Body keypoints: \n" + str(datum.poseKeypoints))
     print('Body keypoints shape:', datum.poseKeypoints.shape)
-    print('Image shape:', datum.cvOutputData.shape)
+    # print('Image shape:', datum.cvOutputData.shape)
 
     image = datum.cvOutputData
-    output_data = {}
+    data = {}
 
     # show the keypoints of the FIRST person only
     # for x, y, score in datum.poseKeypoints[0]:
@@ -34,28 +34,44 @@ def generate_keypoints(infile, show):
         cv2.destroyAllWindows()
 
     else:
-        outfile = generate_outfile(infile=infile)
+        outfile_data, outfile_pix = generate_outfile(infile=infile)
 
-        output_data['keypoints'] = datum.poseKeypoints
-        output_data['dimension'] = datum.cvOutputData.shape
+        data['keypoints'] = datum.poseKeypoints
+        data['dimension'] = datum.cvOutputData.shape
 
-        np.save(outfile, output_data)
+        np.save(outfile_data, data)
+        cv2.imwrite(outfile_pix, image)
+
+        print('Saving data to', outfile_data)
+        print('Saving pix to', outfile_pix)
 
 
 def generate_outfile(infile):
 
-    outdir = os.path.join('test', 'data')
+    # out directories
+    outdir = os.path.join('output')
 
-    if not os.path.exists(outdir):
-        os.makedirs(outdir)
+    dirname = infile[infile.find('/') + 1:infile.rfind('/')]
+
+    outdir_data = os.path.join(outdir, 'data', dirname)
+    outdir_pix = os.path.join(outdir, 'pix', dirname)
+
+    if not os.path.exists(outdir_data):
+        os.makedirs(outdir_data)
+
+    if not os.path.exists(outdir_pix):
+        os.makedirs(outdir_pix)
 
     fname = infile[infile.rfind('/') + 1:infile.rfind('.')]
-    outfile = os.path.join(outdir, '{}_keypoints.npy'.format(fname))
+    outfile_npy = os.path.join(outdir_data, '{}_keypoints.npy'.format(fname))
+    outfile_pix = os.path.join(outdir_pix, '{}_rendered.png'.format(fname))
 
-    return outfile
+    return outfile_npy, outfile_pix
 
 
 if __name__ == '__main__':
+
+    # python extract_keypoints_pyopenpose.py --input datasets/
 
     parser = argparse.ArgumentParser(description='Extract the keypoints')
     parser.add_argument("--input", help="Process a directory of images. Read all standard formats (jpg, png, bmp, etc.).")

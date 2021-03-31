@@ -25,7 +25,7 @@ def load_keypoints(infile):
 
         keypoints = dict(zip(keypoint_ids, keypoints))
 
-        fname = os.path.join('test', 'pix', '{}.jpg'.format(infile[infile.rfind('/') + 1:infile.rfind('_')]))
+        fname = infile.replace('/data/', '/pix/').replace('_keypoints.npy', '_rendered.png')
         image = cv2.imread(fname)
 
         cv2.line(image, tuple(keypoints['Neck'][0:2]), tuple(keypoints['MidHip'][0:2]), color=(0, 255, 255), thickness=1)
@@ -44,7 +44,7 @@ def load_keypoints(infile):
 
 if __name__ == '__main__':
 
-    # python visualize_extracted_keypoints.py --input test/data/2581_keypoints.npy
+    # python visualize_extracted_keypoints.py --input output/data/modern/Paul\ Delvaux/74313_keypoints.npy
 
     parser = argparse.ArgumentParser(description='Extract the keypoints')
     parser.add_argument("--input",

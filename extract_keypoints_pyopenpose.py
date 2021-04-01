@@ -73,6 +73,9 @@ if __name__ == '__main__':
 
     # python extract_keypoints_pyopenpose.py --input datasets/
 
+    # time the execution time
+    start = time.time()
+
     parser = argparse.ArgumentParser(description='Extract the keypoints')
     parser.add_argument("--input", help="Process a directory of images. Read all standard formats (jpg, png, bmp, etc.).")
     args = parser.parse_args()
@@ -83,9 +86,6 @@ if __name__ == '__main__':
     opWrapper = op.WrapperPython()
     opWrapper.configure(params)
     opWrapper.start()
-
-    # time the execution time
-    start = time.time()
 
     if os.path.isfile(args.input):
         generate_keypoints(infile=args.input, show=True)

@@ -165,9 +165,19 @@ make -j`sysctl -n hw.logicalcpu`
 ```
 
 #### Issues
-* vecLib_INCLUDE_DIR:PATH=vecLib_INCLUDE_DIR-NOTFOUND: https://github.com/CMU-Perceptual-Computing-Lab/openpose/issues/1248
+1. vecLib_INCLUDE_DIR:PATH=vecLib_INCLUDE_DIR-NOTFOUND: https://github.com/CMU-Perceptual-Computing-Lab/openpose/issues/1248
 
-Advanced tip: Mac provides both `logicalcpu` and `physicalcpu`, but we want the logical number for maximum speed.
+2. [Python API error: Cannot import name pyopenpose](https://github.com/CMU-Perceptual-Computing-Lab/openpose/issues/1027)
+
+3. [You might be loading two sets of Qt binaries into the same process](https://stackoverflow.com/questions/45944962/you-might-be-loading-two-sets-of-qt-binaries-into-the-same-process)
+
+```bash
+pip uninstall opencv-python
+pip install opencv-python-headless
+```
+
+#### Advanced tip
+Mac provides both `logicalcpu` and `physicalcpu`, but we want the logical number for maximum speed.
 
 If the default compilation fails with Caffe errors, install Caffe separately and set `BUILD_CAFFE` to false in the CMake config. Steps:
 - Re-create the build folder: `rm -rf build; mkdir build; cd build`.

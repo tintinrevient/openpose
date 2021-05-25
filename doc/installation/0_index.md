@@ -165,9 +165,8 @@ make -j`sysctl -n hw.logicalcpu`
 ```
 
 #### Issues
-1. [vecLib_INCLUDE_DIR:PATH=vecLib_INCLUDE_DIR-NOTFOUND](https://github.com/CMU-Perceptual-Computing-Lab/openpose/issues/1248)
+1. [vecLib_INCLUDE_DIR:PATH=vecLib_INCLUDE_DIR-NOTFOUND](https://github.com/CMU-Perceptual-Computing-Lab/openpose/issues/1248) - Go to build/caffe/src/openpose_lib-build/CMakeCache.txt and and manually update:
 
-Go to build/caffe/src/openpose_lib-build/CMakeCache.txt and and manually update:
 ```bash
 vecLib_INCLUDE_DIR:PATH=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Accelerate.framework/Versions/Current/Frameworks/vecLib.framework/Headers/
 ```

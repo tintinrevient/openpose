@@ -71,7 +71,9 @@ def generate_outfile(infile):
 
 if __name__ == '__main__':
 
-    # python extract_keypoints_pyopenpose.py --input datasets/
+    # env = base
+    # python extract_keypoints_pyopenpose.py --input datasets/classical
+    # python extract_keypoints_pyopenpose.py --input datasets/modern
 
     # time the execution time
     start = time.time()

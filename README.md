@@ -186,9 +186,15 @@ OpenPose is freely available for free non-commercial use, and may be redistribut
 
 ## Issues
 
-1. [Python API error: Cannot import name pyopenpose](https://github.com/CMU-Perceptual-Computing-Lab/openpose/issues/1027)
+1. [vecLib_INCLUDE_DIR:PATH=vecLib_INCLUDE_DIR-NOTFOUND](https://github.com/CMU-Perceptual-Computing-Lab/openpose/issues/1248) - Go to build/caffe/src/openpose_lib-build/CMakeCache.txt and and manually update:
 
-2. [You might be loading two sets of Qt binaries into the same process](https://stackoverflow.com/questions/45944962/you-might-be-loading-two-sets-of-qt-binaries-into-the-same-process)
+```bash
+vecLib_INCLUDE_DIR:PATH=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Accelerate.framework/Versions/Current/Frameworks/vecLib.framework/Headers/
+```
+
+2. [Python API error: Cannot import name pyopenpose](https://github.com/CMU-Perceptual-Computing-Lab/openpose/issues/1027)
+
+3. [You might be loading two sets of Qt binaries into the same process](https://stackoverflow.com/questions/45944962/you-might-be-loading-two-sets-of-qt-binaries-into-the-same-process)
 
 ```bash
 pip uninstall opencv-python
